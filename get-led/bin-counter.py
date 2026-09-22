@@ -27,6 +27,9 @@ while True:
             num=255
         print(num,dec2bin(num))
         time.sleep(sleep_time)
+    if (GPIO.input(button_down) and GPIO.input(button_up)):
+        num=255
+    GPIO.output(leds, dec2bin(num))   
+        
     
     
-    GPIO.output(leds, dec2bin(num))
