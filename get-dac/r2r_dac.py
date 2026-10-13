@@ -23,11 +23,15 @@ class R2R_DAC:
 
 if __name__ == "__main__":
     try:
-        dac = R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.183, True)
+        dac = R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.300, True)
+        dynamic_range=3.3
 
         while True:
             try:
                 voltage = float(input("Введите напряжение в Вольтах: "))
+                if not (0.0 <= voltage <= dynamic_range):
+                    print(f"Напряжение выходит за динамический диапазон ЦАП (0.00 - {dynamic_range:.2f} В)")
+                    continue
                 dac.set_voltage(voltage)
 
             except ValueError:
